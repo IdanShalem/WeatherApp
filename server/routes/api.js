@@ -29,12 +29,12 @@ router.get('/city/:cityName', async function(req, res) {
     const { cityName } = req.params
     try{
         const weatherData = await axios.get(getAPI(cityName))
-        const city = {
+        const city = new City ({
             name: weatherData.data.name,
             temperature: weatherData.data.main.temp,
             condition: weatherData.data['weather'][0].description,
-            conditionPic: weatherData.data['weather'][0].id
-        }
+            conditionPic: weatherData.data['weather'][0].icon
+        })
         res.send(city)
     } catch(error){
         res.send(error)

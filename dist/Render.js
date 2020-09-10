@@ -1,10 +1,10 @@
 class Render {
 
-    renderData(citiesData) {
+    renderData(allCityData) {
         const src = $('#cities-template').html()
         const template = Handlebars.compile(src)
-        const newHTML = template({citiesData}) 
-        $('#cities-to-render').append(newHTML)
+        const newHTML = template({allCityData}) 
+        $('#cities-to-render').empty().append(newHTML)
     }
 
 }
