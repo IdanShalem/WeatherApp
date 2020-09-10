@@ -19,4 +19,10 @@ $('#cities-to-render').on('click', '.fa-plus-circle', async function() {
     render.renderData(tempManager.cityData) 
 })
 
+$('#cities-to-render').on('click', '.fa-minus-circle', async function() {
+    const cityId = $(this).closest('.city').data().id
+    await tempManager.removeCity(cityId)
+    render.renderData(tempManager.cityData) 
+})
+
 loadPage()

@@ -16,19 +16,18 @@ class TempManager {
 
     async saveCity(cityId) {
         const index = this.cityData.findIndex(c => c._id === cityId)
-        const cityToSavew =  await $.post(`/city`, this.cityData[index]) 
+        await $.post(`/city`, this.cityData[index]) 
         this.cityData[index].isSaved = true
     }
 
-    removeCity(cityName) {
-        $.ajax({
+    async removeCity(cityId) {
+        const index = this.cityData.findIndex(c => c._id === cityId)
+        const cityName = this.cityData[index].name
+        await $.ajax({
             url: `/city/${cityName}`,
-            method: 'DELETE',
-            success: function(city){
-                const index = this.cityData.findIndex(c => c == city)
-                this.cityData.splice(index, 1)
-            }   
+            method: 'DELETE'  
         })
+        this.cityData.splice(index, 1)
     }
 
 }
