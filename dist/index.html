@@ -3,22 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="font-awesome/css/font-awesome.css">
     <title>Document</title>
 </head>
 <body>
 
-    <input id="city-search" type="text" placeholder="Search by city">
-    <button id="city-submit">Search</button>
+    <input id="city-input" type="text" placeholder="Search by city">
+    <button id="city-submit" onclick=handleSearch()>Search</button>
 
     <div id="cities-to-render"></div>
 
     <script id="cities-template" type="text/x-handlebars-template">
-        {{#each citiesData}}
-            <div class="city">
+        {{#each allCityData}}
+            <div class="city" data-id={{_id}}>
+                {{#if isSaved}}<i class="fa fa-minus-circle"></i>{{else}}<i class="fa fa-plus-circle"></i>{{/if}}
                 <span>{{name}}</span>
                 <span>{{temperature}}</span>
                 <span>{{condition}}</span>
-                <span>{{conditionPic}}</span>
+                <img src="http://openweathermap.org/img/wn/{{conditionPic}}@2x.png"/>
             </div>
         {{/each}}
     </script>

@@ -5,20 +5,19 @@ class TempManager {
     }
 
     async getDataFromDB() {
-        this.cityData.length = 0
         const citiesDB = await $.get('/cities')
-        citiesDB.forEach(city => this.cityData.push(city))
+        citiesDB.forEach(city => this.cityData.push({...city, isSaved: true}))
     }
 
     async getCityData(cityName) {
         const city = await $.get(`/city/${cityName}`)
-        this.cityData.push(city)
+        this.cityData.push({...city, isSaved: false})
     }
 
-    saveCity(city) {
-        $.post(`/city`, city, function(cityDB) {
-            this.cityData.push(cityDB)
-        })
+    async saveCity(cityId) {
+        const index = this.cityData.findIndex(c => c._id === cityId)
+        const cityToSavew =  await $.post(`/city`, this.cityData[index]) 
+        this.cityData[index].isSaved = true
     }
 
     removeCity(cityName) {
