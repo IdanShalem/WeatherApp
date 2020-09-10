@@ -25,6 +25,7 @@
     "handlebars": "^4.7.6",
     "jquery": "^3.5.1",
     "mongoose": "^5.10.4",
-    "parser": "^0.1.4"
+    "parser": "^0.1.4",
+    "urllib": "^2.36.1"
   }
 }

@@ -10,16 +10,19 @@ const apiKey = 'appid=516eda5415931599ef12e92f4733ebf9' //the API key for gettin
 
 
 router.get('/defaultCity', function(req, res) {
-    urllib.request(`tel-aviv&${metricUnits}&${apiKey}`, function(err, weather) {
+    urllib.request(`${apiURL}tel-aviv&${metricUnits}&${apiKey}`, function(err, cityResult) {
         if(err){
             res.send(err)
         }
+        let weather = JSON.parse(cityResult.toString())
         const defaultCity = new City({
             name: weather.name,
             temperature: weather.main.temp,
-            condition: weather.weather.description,
-            conditionPic: weather.weather.id
+            condition: weather['weather'][0].description,
+            conditionPic: weather['weather'][0].id
         })
         defaultCity.save().then(c => res.send(c))
     })
 })
+
+module.exports = router
