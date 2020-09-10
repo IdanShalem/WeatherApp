@@ -1,14 +1,13 @@
-class Cities {
+class TempManager {
 
     constructor() {
-        cityData = []
+        this.cityData = []
     }
 
-    getDataFromDB() {
+    async getDataFromDB() {
         this.cityData.length = 0
-        $.get('/cities', function(citiesDB) {
-            citiesDB.forEach(city => this.cityData.push(city))
-        })
+        const citiesDB = await $.get('/cities')
+        citiesDB.forEach(city => this.cityData.push(city))
     }
 
     async getCityData(cityName) {
