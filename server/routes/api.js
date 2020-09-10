@@ -21,7 +21,24 @@ router.get('/defaultCity', function(req, res) {
             condition: weather['weather'][0].description,
             conditionPic: weather['weather'][0].id
         })
-        defaultCity.save().then(c => res.send(c))
+        res.send(defaultCity)
+    })
+})
+
+router.get('/city/:cityName', function(req, res) {
+    const { cityName } = req.params
+    urllib.request(`${apiURL}${cityName}&${metricUnits}&${apiKey}`, function(err, cityResult) {
+        if(err){
+            res.send(err)
+        }
+        let weather = JSON.parse(cityResult.toString())
+        const city = new City({
+            name: weather.name,
+            temperature: weather.main.temp,
+            condition: weather['weather'][0].description,
+            conditionPic: weather['weather'][0].id
+        })
+        res.send(city)
     })
 })
 
