@@ -1,0 +1,72 @@
+body {
+    height: 100vh;
+}
+
+#container {
+    height: 100vh;
+    display: grid;
+    grid-template-rows: 2fr 7fr;
+}
+
+#search-bar {
+    display: grid;
+    justify-content: center;
+    align-content: center;
+    background-image: url('https://nema.kn/wp-content/uploads/2019/01/hd-nature-wallpaper-background-images-love-nice-weather-sadness-romance-high-resolution-widescreen-1366x768.jpg');
+    grid-gap:10px;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    padding-top: 10px;
+}
+
+h1{
+    color: white;
+    font-family: 'Raleway', sans-serif;
+    text-align: center;
+}
+
+#searching-input {
+    background-color: whitesmoke;
+    border-radius: 15px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+#city-input {
+    color: rgb(61, 61, 61);
+    border: none;
+    border-radius: 5px;
+    background: transparent;
+    outline: none;
+    opacity: 0.9;
+    text-align: center;
+    padding: 8px;
+    padding-left: 20px;
+    padding-right: 20px;
+    font-weight: bold;
+}
+
+::placeholder {
+    color: rgb(61, 61, 61);
+    text-align: center;
+    font-weight: bold;
+}
+
+.fa-search{   
+    color: rgb(54, 54, 54);
+    font-size: 1.5em;  
+}
+
+#city-submit {
+    display: inline-block;
+    position: relative;
+    justify-self: end;
+    background-color: rgb(252, 230, 184);
+    border-radius: 50%;
+    padding: 6px;
+    left: 10px;
+    bottom: 30px;
+}
+
+#cities-to-render {
+    background-color: blue;
+}
