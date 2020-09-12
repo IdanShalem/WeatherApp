@@ -4,14 +4,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="font-awesome/css/font-awesome.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&family=Raleway:wght@300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
     <title>Document</title>
 </head>
 <body>
 
-    <input id="city-input" type="text" placeholder="Search by city">
-    <button id="city-submit" onclick=handleSearch()>Search</button>
+    <div id="container">
+        <div id="search-bar">
+            <h1>WeatherApp</h1>
+            <div id="searching-input">
+                <input id="city-input" type="text" placeholder="Search by city">
+            </div>   
+            <div id="city-submit" onclick=handleSearch()>
+                <i class="fa fa-search"></i>
+            </div> 
+        </div>
+        
 
-    <div id="cities-to-render"></div>
+        <div id="cities-to-render"></div>
+    </div>
+    
 
     <script id="cities-template" type="text/x-handlebars-template">
         {{#each allCityData}}
