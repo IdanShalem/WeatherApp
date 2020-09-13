@@ -1,11 +1,10 @@
 body {
-    height: 100vh;
+    /* height: 100vh; */
 }
 
 #container {
-    height: 100vh;
     display: grid;
-    grid-template-rows: 2fr 7fr;
+    grid-template-rows: 1fr 8fr;
 }
 
 #search-bar {
@@ -13,10 +12,10 @@ body {
     justify-content: center;
     align-content: center;
     background-image: url('https://nema.kn/wp-content/uploads/2019/01/hd-nature-wallpaper-background-images-love-nice-weather-sadness-romance-high-resolution-widescreen-1366x768.jpg');
-    grid-gap:10px;
     background-repeat: no-repeat;
     background-size: 100% 100%;
-    padding-top: 10px;
+    padding-top: 7px;
+    box-shadow: 0px 1px 2px rgb(88, 88, 88);
 }
 
 h1{
@@ -25,48 +24,127 @@ h1{
     text-align: center;
 }
 
-#searching-input {
-    background-color: whitesmoke;
-    border-radius: 15px;
-    font-family: 'Montserrat', sans-serif;
+#search {
+    position: relative;
+    display: grid;
+    grid-template-rows: 1fr 1fr 0px;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
 
 #city-input {
+    background-color: whitesmoke;
     color: rgb(61, 61, 61);
+    box-shadow: 1px 1px 2px black;
     border: none;
-    border-radius: 5px;
-    background: transparent;
+    border-radius: 15px;
     outline: none;
-    opacity: 0.9;
-    text-align: center;
     padding: 8px;
     padding-left: 20px;
     padding-right: 20px;
+    text-align: center;
     font-weight: bold;
+    font-family: 'Montserrat', sans-serif;
 }
 
 ::placeholder {
-    color: rgb(61, 61, 61);
+    color: rgb(36, 36, 36);
     text-align: center;
     font-weight: bold;
 }
 
-.fa-search{   
-    color: rgb(54, 54, 54);
-    font-size: 1.5em;  
+#search .popuptext {
+    visibility: hidden;
+    background-color: #0c0c0c;
+    color: #ffffff;
+    border-radius: 6px;
+    padding: 3px;
+    font-size: 0.6em;
+    font-family: 'Montserrat', sans-serif;
+    opacity:0.65;
+    justify-self: center;
+    align-self: center;
+}
+  
+#search .show {
+    visibility: visible;
+    -webkit-animation: fadeIn 1s;
+    animation: fadeIn 1s;
+}
+  
+@-webkit-keyframes fadeIn {
+    from {opacity: 0;} 
+    to {opacity: 0.65;}
+}
+  
+@keyframes fadeIn {
+    from {opacity: 0;}
+    to {opacity: 0.65;}
 }
 
 #city-submit {
-    display: inline-block;
     position: relative;
     justify-self: end;
     background-color: rgb(252, 230, 184);
     border-radius: 50%;
-    padding: 6px;
+    padding: 5px;
     left: 10px;
-    bottom: 30px;
+    bottom: 55px;
+    box-shadow: 1px 1px 5px 1px rgb(48, 48, 48);
 }
 
-#cities-to-render {
-    background-color: blue;
+.fa-search{   
+    color: rgb(54, 54, 54);
+    font-size: 1.2em;
+}
+
+.city {
+    display: grid;
+    grid-template-areas: "b i n" "b i t";
+    grid-template-columns: 10% 20% 70%;
+    font-family: 'Montserrat', sans-serif;
+    align-content: start;
+    border-bottom: 0.5px solid rgb(206, 204, 204);
+    padding: 10px 15px 5px 5px;
+}
+
+.city-img {
+    grid-area: i;
+    width: 50px;
+    align-self: center;
+}
+
+.city-button {
+    grid-area: b;
+    font-size: 1.3em;
+    align-self: center;
+}
+
+.city-name {
+    grid-area: n;
+    font-weight: bold;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.city-name i {
+    justify-self: end;
+}
+
+.city-temperature {
+    grid-area: t;
+    display: grid;
+    grid-template-columns: 90% 10%;
+    font-size: 0.8em;
+}
+
+.fa-retweet {
+    font-size: 0.9em;
+}
+
+.fa-retweet:active {
+    color: rgb(158, 121, 0);
 }
