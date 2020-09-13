@@ -6,16 +6,18 @@
     <link rel="stylesheet" href="font-awesome/css/font-awesome.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat&family=Raleway:wght@300&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
-    <title>Document</title>
+    <title>WeatherApp</title>
 </head>
 <body>
 
     <div id="container">
         <div id="search-bar">
-            <h1>WeatherApp</h1>
-            <div id="searching-input">
-                <input id="city-input" type="text" placeholder="Search by city">
-            </div>   
+            <h1 class="col s5">WeatherApp</h1>
+            <div id="search">
+                <input id="city-input" type="text" placeholder="Search by city" 
+                    onfocus="this.placeholder = ''" onblur="this.placeholder = 'Search by city'" />
+                <span class="popuptext" id="popup-error"></span>
+            </div>
             <div id="city-submit" onclick=handleSearch()>
                 <i class="fa fa-search"></i>
             </div> 
@@ -29,13 +31,15 @@
     <script id="cities-template" type="text/x-handlebars-template">
         {{#each allCityData}}
             <div class="city" data-id={{_id}}>
-                {{#if isSaved}}<i class="fa fa-minus-circle"></i>{{else}}<i class="fa fa-plus-circle"></i>{{/if}}
-                <span>{{name}}</span>
-                <span>{{temperature}}</span>
-                <span>{{condition}}</span>
-                <img src="http://openweathermap.org/img/wn/{{conditionPic}}@2x.png"/>
+                {{#if isSaved}}<i class="city-button fa fa-minus-circle"></i>{{else}}<i class="city-button fa fa-plus-circle"></i>{{/if}}
+                <span class="city-name">{{name}} <i class="fa fa-retweet"></i></span>
+                <div class="city-temperature">
+                    <span>{{temperature}} &deg;C | {{condition}}</span>
+                </div>
+                <img class="city-img" src="http://openweathermap.org/img/wn/{{conditionPic}}@2x.png"/>
             </div>
         {{/each}}
+        
     </script>
 
     <script src="jquery/dist/jquery.js"></script>

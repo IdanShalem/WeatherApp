@@ -31,11 +31,33 @@ router.get('/city/:cityName', async function(req, res) {
         const weatherData = await axios.get(getAPI(cityName))
         const city = new City ({
             name: weatherData.data.name,
-            temperature: weatherData.data.main.temp,
+            temperature: Math.round(weatherData.data.main.temp),
             condition: weatherData.data['weather'][0].description,
             conditionPic: weatherData.data['weather'][0].icon
         })
         res.send(city)
+    } catch(error){
+        res.send(error)
+    }
+})
+
+router.put('/city/:cityName', async function(req, res) {
+    const { cityName } = req.params
+    try{
+        const weatherData = await axios.get(getAPI(cityName))
+        City.findOneAndUpdate(
+            {'name': cityName},
+            { $set:{
+                temperature: Math.round(weatherData.data.main.temp),
+                condition: weatherData.data['weather'][0].description,
+                conditionPic: weatherData.data['weather'][0].icon
+            } },
+            {new: true},
+            (err, city) => {
+                res.send(city)
+            }
+        )
+        
     } catch(error){
         res.send(error)
     }
