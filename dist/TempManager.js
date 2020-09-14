@@ -18,24 +18,25 @@ class TempManager {
         if(city.name === 'Error') {
             return false 
         } else { 
-            this.cityData.push({...city, searchQuery: cityName, isSaved: false}) 
+            this.cityData.push({...city, isSaved: false}) 
             return true
         }
     }
 
-    async updateCityData(cityId) {
-        const cityInArr = this.cityFinder('findIndex', '_id', cityId)
+    async updateCityData(id) {
+        const cityInArr = this.cityFinder('findIndex', '_id', id)
         const savedCity = this.cityData[cityInArr].isSaved
+        const cityId = this.cityData[cityInArr].cityId
         let updatedCity
         if(savedCity) {
                 updatedCity = await $.ajax({
                 method: 'PUT',
-                url: `/city/${this.cityData[cityInArr].searchQuery}`
+                url: `/city/${cityId}`,
             })
         } else {
-            updatedCity = await $.get(`/city/${this.cityData[cityInArr].searchQuery}`)
+            updatedCity = await $.get(`/cityById/${cityId}`)
         }
-        this.cityData[cityInArr] = {...updatedCity, searchQuery: cityName, isSaved: savedCity}
+        this.cityData[cityInArr] = {...updatedCity, isSaved: savedCity}
     }
 
     async saveCity(cityId) {
