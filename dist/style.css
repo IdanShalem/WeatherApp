@@ -9,7 +9,7 @@
     grid-gap: 5px;
     justify-content: center;
     align-content: center;
-    background-image: url('https://nema.kn/wp-content/uploads/2019/01/hd-nature-wallpaper-background-images-love-nice-weather-sadness-romance-high-resolution-widescreen-1366x768.jpg');
+    background-image: url('./src/Sky.jpg');
     background-repeat: no-repeat;
     background-size: 100% 100%;
     padding: 7px;
@@ -62,7 +62,7 @@ h1{
     display: inline-block;
     justify-self: end;
     align-self: center;
-    background-color: rgb(248, 187, 117);
+    background-color: rgb(252, 230, 184);
     border-radius: 50%;
     padding: 3px;
     box-shadow: 1px 1px 5px 1px rgb(48, 48, 48);
