@@ -20,7 +20,7 @@ class TempManager {
         } else {
             city = await $.get(`/city/${cityName}`)
         }
-        if(city.name === 'Error' || city.code === "ERR_UNESCAPED_CHARACTERS") {
+        if(city.name === 'Error') {
             return false 
         } else { 
             this.cityData.push({...city, isSaved: false}) 
