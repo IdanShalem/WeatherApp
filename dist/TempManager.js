@@ -13,8 +13,13 @@ class TempManager {
         citiesDB.forEach(city => this.cityData.push({...city, isSaved: true}))
     }
 
-    async getCityData(cityName) {
-        const city = await $.get(`/city/${cityName}`)
+    async getCityData(cityName, lat = '', lng = '') {
+        let city
+        if(lat && lng) {
+            city = await $.get(`/city/${cityName}/${lat}/${lng}`)
+        } else {
+            city = await $.get(`/city/${cityName}`)
+        }
         if(city.name === 'Error') {
             return false 
         } else { 

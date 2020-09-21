@@ -2,8 +2,13 @@ const tempManager = new TempManager()
 const render = new Render()
 
 const loadPage = async function() {
+    navigator.geolocation.getCurrentPosition(async function(pos){
+        await tempManager.getCityData('b', pos.coords.latitude, pos.coords.longitude)
+        render.renderCurrentLoc(tempManager.cityData[tempManager.cityData.length - 1])
+        tempManager.cityData.splice(tempManager.cityData.length - 1)
+    })
     await tempManager.getDataFromDB()
-    render.renderData(tempManager.cityData) 
+    render.renderCities(tempManager.cityData) 
 }
 
 const handleSearch = async function(){
@@ -12,7 +17,7 @@ const handleSearch = async function(){
     if(isCityExists) {
         const cityData = await tempManager.getCityData(cityInput)
         if(cityData) {
-            render.renderData(tempManager.cityData) 
+            render.renderCities(tempManager.cityData) 
         } else {
             render.renderError(`COULDN'T FIND CITY`)
         } 
@@ -29,19 +34,19 @@ const findCityId = (element) => {
 $('#cities-to-render').on('click', '.fa-plus-circle', async function() {
     const cityId = findCityId($(this))
     await tempManager.saveCity(cityId)
-    render.renderData(tempManager.cityData) 
+    render.renderCities(tempManager.cityData) 
 })
 
 $('#cities-to-render').on('click', '.fa-minus-circle', async function() {
     const cityId = findCityId($(this))
     await tempManager.removeCity(cityId)
-    render.renderData(tempManager.cityData) 
+    render.renderCities(tempManager.cityData) 
 })
 
 $('#cities-to-render').on('click', '.fa-retweet', async function() {
     const cityId = findCityId($(this))
     await tempManager.updateCityData(cityId)
-    render.renderData(tempManager.cityData)
+    render.renderCities(tempManager.cityData)
 })
 
 loadPage()

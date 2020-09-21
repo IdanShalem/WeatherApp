@@ -1,16 +1,18 @@
 #container {
     display: grid;
-    grid-template-rows: 1fr 8fr;
+
 }
 
 #search-bar {
     display: grid;
+    grid-template-rows: repeat(3, 1fr);
+    grid-gap: 5px;
     justify-content: center;
     align-content: center;
     background-image: url('https://nema.kn/wp-content/uploads/2019/01/hd-nature-wallpaper-background-images-love-nice-weather-sadness-romance-high-resolution-widescreen-1366x768.jpg');
     background-repeat: no-repeat;
     background-size: 100% 100%;
-    padding-top: 7px;
+    padding: 7px;
     box-shadow: 0px 1px 2px rgb(88, 88, 88);
 }
 
@@ -18,41 +20,32 @@ h1{
     color: white;
     font-family: 'Raleway', sans-serif;
     text-align: center;
+    margin: 2px;
 }
 
 #search {
-    position: relative;
-    display: grid;
-    grid-template-rows: 1fr 1fr 0px;
-    cursor: pointer;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
+    border-radius: 15px;
+    padding: 5px;
+    align-self: center;
+    background-color: white;
+    box-shadow: 1px 1px 2px black;
 }
 
 #city-input {
-    background-color: whitesmoke;
-    color: rgb(61, 61, 61);
-    box-shadow: 1px 1px 2px black;
+    background-color: transparent;
     border: none;
-    border-radius: 15px;
     outline: none;
-    padding: 8px;
-    padding-left: 20px;
-    padding-right: 20px;
-    text-align: center;
+    color: rgb(61, 61, 61);
     font-weight: bold;
     font-family: 'Montserrat', sans-serif;
 }
 
 ::placeholder {
     color: rgb(36, 36, 36);
-    text-align: center;
     font-weight: bold;
 }
 
-#search .popuptext {
+#search-bar .popuptext {
     visibility: hidden;
     background-color: #0c0c0c;
     color: #ffffff;
@@ -64,37 +57,35 @@ h1{
     justify-self: center;
     align-self: center;
 }
-  
-#search .show {
-    visibility: visible;
-    -webkit-animation: fadeIn 1s;
-    animation: fadeIn 1s;
-}
-  
-@-webkit-keyframes fadeIn {
-    from {opacity: 0;} 
-    to {opacity: 0.65;}
-}
-  
-@keyframes fadeIn {
-    from {opacity: 0;}
-    to {opacity: 0.65;}
-}
 
 #city-submit {
-    position: relative;
+    display: inline-block;
     justify-self: end;
+    align-self: center;
     background-color: rgb(252, 230, 184);
     border-radius: 50%;
-    padding: 5px;
-    left: 10px;
-    bottom: 55px;
+    padding: 3px;
     box-shadow: 1px 1px 5px 1px rgb(48, 48, 48);
 }
 
 .fa-search{   
+    font-size: 0.9em;
     color: rgb(54, 54, 54);
-    font-size: 1.2em;
+}
+
+#current-loc {
+    background-color: rgb(243, 236, 227);
+    opacity: 0.6;
+    border-bottom: 0.5px solid rgb(206, 204, 204);
+}
+
+#current-loc-weather {
+    display: grid;
+    grid-template-areas: "i n t";
+    grid-template-columns: 10% 40% 50%;
+    grid-gap: 10px;
+    font-family: 'Montserrat', sans-serif;
+    align-content: start;
 }
 
 .city {
@@ -119,6 +110,11 @@ h1{
     align-self: center;
 }
 
+#current-name {
+    display: inline-block;
+    align-self: center;
+}
+
 .city-name {
     grid-area: n;
     font-weight: bold;
@@ -128,6 +124,11 @@ h1{
 
 .city-name i {
     justify-self: end;
+}
+
+#current-temp {
+    display: inline-block;
+    align-self: center;
 }
 
 .city-temperature {
