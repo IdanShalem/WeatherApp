@@ -5,8 +5,12 @@
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+<<<<<<< HEAD
     "start": "node server.js",
     "review": "node node_modules/elevation-pr/index.js"
+=======
+    "start": "node server.js"
+>>>>>>> 7eb47cc504468363d07c7228c3d2bf209a1b45de
   },
   "repository": {
     "type": "git",
@@ -28,4 +32,8 @@
     "materialize-css": "^1.0.0-rc.2",
     "mongoose": "^5.10.4"
   }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 7eb47cc504468363d07c7228c3d2bf209a1b45de
