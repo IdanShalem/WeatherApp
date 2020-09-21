@@ -6,40 +6,37 @@ const City = require('../model/City')
 
 const apiKey = 'appid=516eda5415931599ef12e92f4733ebf9' //the API key for getting JSON files
 const getAPIByName = (cityName) => { 
-    return `http://api.openweathermap.org/data/2.5/weather?q=${cityName}&units=metric&${apiKey}` }
+    return `http://api.openweathermap.org/data/2.5/weather?q=${cityName}&units=metric&${apiKey}` 
+}
 
-    const getAPIById = (cityId) => { 
-        return `http://api.openweathermap.org/data/2.5/weather?id=${cityId}&units=metric&${apiKey}` }
+const getAPIById = (cityId) => { 
+    return `http://api.openweathermap.org/data/2.5/weather?id=${cityId}&units=metric&${apiKey}` 
+}
 
+const getAPIByLoc = (lat, lng) => { 
+    return `http://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lng}&units=metric&${apiKey}` 
+}
 
-router.get('/defaultCity', async function(req, res) {
+const assignCity = (weatherData) =>{
+    return new City ({
+        name: weatherData.data.name,
+        temperature: Math.round(weatherData.data.main.temp),
+        condition: weatherData.data['weather'][0].description,
+        conditionPic: weatherData.data['weather'][0].icon,
+        cityId: weatherData.data.id
+    })
+}
+
+router.get('/city/:cityName/:lat?/:lng?', async function(req, res) {
+    const { cityName, lat, lng } = req.params
     try{
-        const weatherData = await axios.get(getAPIByName('tel-aviv'))
-        const city = {
-            name: weatherData.data.name,
-            temperature: Math.round(weatherData.data.main.temp),
-            condition: weatherData.data['weather'][0].description,
-            conditionPic: weatherData.data['weather'][0].id,
-            CityId: weather.data.id
+        let weatherData
+        if(lat && lng) {
+            weatherData = await axios.get(getAPIByLoc(lat, lng))
+        } else{
+            weatherData = await axios.get(getAPIByName(cityName))
         }
-        res.send(city)
-    }
-    catch(error){
-        res.send(error)
-    }
-})
-
-router.get('/city/:cityName', async function(req, res) {
-    const { cityName } = req.params
-    try{
-        const weatherData = await axios.get(getAPIByName(cityName))
-        const city = new City ({
-            name: weatherData.data.name,
-            temperature: Math.round(weatherData.data.main.temp),
-            condition: weatherData.data['weather'][0].description,
-            conditionPic: weatherData.data['weather'][0].icon,
-            cityId: weatherData.data.id
-        })
+        const city = assignCity(weatherData)
         res.send(city)
     } catch(error){
         res.send(error)
@@ -50,13 +47,7 @@ router.get('/cityById/:cityId', async function(req, res) {
     const { cityId } = req.params
     try{
         const weatherData = await axios.get(getAPIById(cityId))
-        const city = new City ({
-            name: weatherData.data.name,
-            temperature: Math.round(weatherData.data.main.temp),
-            condition: weatherData.data['weather'][0].description,
-            conditionPic: weatherData.data['weather'][0].icon,
-            cityId: weatherData.data.id
-        })
+        const city = assignCity(weatherData)
         res.send(city)
     } catch(error){
         res.send(error)

@@ -14,19 +14,29 @@
         <div id="search-bar">
             <h1 class="col s5">WeatherApp</h1>
             <div id="search">
-                <input id="city-input" type="text" placeholder="Search by city" 
-                    onfocus="this.placeholder = ''" onblur="this.placeholder = 'Search by city'" />
-                <span class="popuptext" id="popup-error"></span>
+                <input id="city-input" type="text" placeholder="Search by city name..." 
+                    onfocus="this.placeholder = ''" onblur="this.placeholder = 'Search by city name...'" />
+                <div id="city-submit" onclick=handleSearch()>
+                    <i class="fa fa-search"></i>
+                </div>
+                
             </div>
-            <div id="city-submit" onclick=handleSearch()>
-                <i class="fa fa-search"></i>
-            </div> 
+            <div class="popuptext" id="popup-error"></div>  
         </div>
-        
+        <div id="current-loc"></div>
 
         <div id="cities-to-render"></div>
     </div>
     
+    <script id="current-loc-template" type="text/x-handlebars-template">
+            <div id="current-loc-weather">
+                <img id="current-img" class="city-img" src="http://openweathermap.org/img/wn/{{conditionPic}}@2x.png"/>
+                <span id="current-name" class="city-name">{{name}}</span>
+                <div id="current-temp" class="city-temperature">
+                    <span>{{temperature}} &deg;C | {{condition}}</span>
+                </div>
+            </div>
+    </script>
 
     <script id="cities-template" type="text/x-handlebars-template">
         {{#each allCityData}}
@@ -39,7 +49,6 @@
                 <img class="city-img" src="http://openweathermap.org/img/wn/{{conditionPic}}@2x.png"/>
             </div>
         {{/each}}
-        
     </script>
 
     <script src="jquery/dist/jquery.js"></script>
