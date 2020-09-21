@@ -13,7 +13,7 @@ app.use(bodyParser.urlencoded({ extended: false }))
 
 app.use('/', api)
 
-mongoose.connect(process.env.MONGODB_URI ||'mongodb://localhost/WeatherDB', {useNewUrlParser: true})
+mongoose.connect(process.env.MONGODB_URI ||'mongodb://localhost/WeatherDB')
 
 port = 3000
 app.listen(process.env.PORT || port, function(){
