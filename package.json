@@ -1,0 +1,39 @@
+{
+  "name": "weatherapp",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+<<<<<<< HEAD
+    "start": "node server.js",
+    "review": "node node_modules/elevation-pr/index.js"
+=======
+    "start": "node server.js"
+>>>>>>> 7eb47cc504468363d07c7228c3d2bf209a1b45de
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/IdanShalem/WeatherApp.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/IdanShalem/WeatherApp/issues"
+  },
+  "homepage": "https://github.com/IdanShalem/WeatherApp#readme",
+  "dependencies": {
+    "axios": "^0.20.0",
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "font-awesome": "^4.7.0",
+    "handlebars": "^4.7.6",
+    "jquery": "^3.5.1",
+    "materialize-css": "^1.0.0-rc.2",
+    "mongoose": "^5.10.4"
+  }
+<<<<<<< HEAD
+}
+=======
+}
+>>>>>>> 7eb47cc504468363d07c7228c3d2bf209a1b45de

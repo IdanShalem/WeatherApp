@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="font-awesome/css/font-awesome.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&family=Raleway:wght@300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <title>WeatherApp</title>
+</head>
+<body>
+
+    <div id="container">
+        <div id="search-bar">
+            <h1 class="col s5">WeatherApp</h1>
+            <div id="search">
+                <input id="city-input" type="text" placeholder="Search by city name..." 
+                    onfocus="this.placeholder = ''" onblur="this.placeholder = 'Search by city name...'" />
+                <div id="city-submit" onclick=handleSearch()>
+                    <i class="fa fa-search"></i>
+                </div>
+                
+            </div>
+            <div class="popuptext" id="popup-error"></div>  
+        </div>
+        <div id="current-loc"></div>
+
+        <div id="cities-to-render"></div>
+    </div>
+    
+    <script id="current-loc-template" type="text/x-handlebars-template">
+            <div id="current-loc-weather">
+                <img id="current-img" class="city-img" src="http://openweathermap.org/img/wn/{{conditionPic}}@2x.png"/>
+                <span id="current-name" class="city-name">{{name}}</span>
+                <div id="current-temp" class="city-temperature">
+                    <span>{{temperature}} &deg;C | {{condition}}</span>
+                </div>
+            </div>
+    </script>
+
+    <script id="cities-template" type="text/x-handlebars-template">
+        {{#each allCityData}}
+            <div class="city" data-id={{_id}}>
+                {{#if isSaved}}<i class="city-button fa fa-minus-circle"></i>{{else}}<i class="city-button fa fa-plus-circle"></i>{{/if}}
+                <span class="city-name">{{name}} <i class="fa fa-retweet"></i></span>
+                <div class="city-temperature">
+                    <span>{{temperature}} &deg;C | {{condition}}</span>
+                </div>
+                <img class="city-img" src="http://openweathermap.org/img/wn/{{conditionPic}}@2x.png"/>
+            </div>
+        {{/each}}
+    </script>
+
+    <script src="jquery/dist/jquery.js"></script>
+    <script src="handlebars/dist/handlebars.js"></script>
+    <script src="./TempManager.js"></script>
+    <script src="./Render.js"></script>
+    <script src="./main.js"></script>
+</body>
+</html>

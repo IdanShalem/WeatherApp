@@ -1,0 +1,147 @@
+#container {
+    display: grid;
+
+}
+
+#search-bar {
+    display: grid;
+    grid-template-rows: repeat(3, 1fr);
+    grid-gap: 5px;
+    justify-content: center;
+    align-content: center;
+    background-image: url('./src/Sky.jpg');
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    padding: 7px;
+    box-shadow: 0px 1px 2px rgb(88, 88, 88);
+}
+
+h1{
+    color: white;
+    font-family: 'Raleway', sans-serif;
+    text-align: center;
+    margin: 2px;
+}
+
+#search {
+    border-radius: 15px;
+    padding: 5px;
+    align-self: center;
+    background-color: white;
+    box-shadow: 1px 1px 2px black;
+}
+
+#city-input {
+    background-color: transparent;
+    border: none;
+    outline: none;
+    color: rgb(61, 61, 61);
+    font-weight: bold;
+    font-family: 'Montserrat', sans-serif;
+}
+
+::placeholder {
+    color: rgb(36, 36, 36);
+    font-weight: bold;
+}
+
+#search-bar .popuptext {
+    visibility: hidden;
+    background-color: #0c0c0c;
+    color: #ffffff;
+    border-radius: 6px;
+    padding: 3px;
+    font-size: 0.6em;
+    font-family: 'Montserrat', sans-serif;
+    opacity:0.65;
+    justify-self: center;
+    align-self: center;
+}
+
+#city-submit {
+    display: inline-block;
+    justify-self: end;
+    align-self: center;
+    background-color: rgb(252, 230, 184);
+    border-radius: 50%;
+    padding: 3px;
+    box-shadow: 1px 1px 5px 1px rgb(48, 48, 48);
+}
+
+.fa-search{   
+    font-size: 1.2em;
+    color: rgb(54, 54, 54);
+}
+
+#current-loc {
+    background-color: rgb(243, 236, 227);
+    opacity: 0.6;
+    border-bottom: 0.5px solid rgb(206, 204, 204);
+}
+
+#current-loc-weather {
+    display: grid;
+    grid-template-areas: "i n t";
+    grid-template-columns: 10% 40% 50%;
+    grid-gap: 10px;
+    font-family: 'Montserrat', sans-serif;
+    align-content: start;
+}
+
+.city {
+    display: grid;
+    grid-template-areas: "b i n" "b i t";
+    grid-template-columns: 10% 20% 70%;
+    font-family: 'Montserrat', sans-serif;
+    align-content: start;
+    border-bottom: 0.5px solid rgb(206, 204, 204);
+    padding: 10px 15px 5px 5px;
+}
+
+.city-img {
+    grid-area: i;
+    width: 50px;
+    align-self: center;
+}
+
+.city-button {
+    grid-area: b;
+    font-size: 1.3em;
+    align-self: center;
+}
+
+#current-name {
+    display: inline-block;
+    align-self: center;
+}
+
+.city-name {
+    grid-area: n;
+    font-weight: bold;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.city-name i {
+    justify-self: end;
+}
+
+#current-temp {
+    display: inline-block;
+    align-self: center;
+}
+
+.city-temperature {
+    grid-area: t;
+    display: grid;
+    grid-template-columns: 90% 10%;
+    font-size: 0.8em;
+}
+
+.fa-retweet {
+    font-size: 0.9em;
+}
+
+.fa-retweet:active {
+    color: rgb(158, 121, 0);
+}
